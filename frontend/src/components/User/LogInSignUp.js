@@ -10,7 +10,7 @@ import { useSelector,useDispatch } from "react-redux";
 import { clearingError,login,register} from "../../Actions/UserAction";
 import { useAlert } from "react-alert";
 
-const LogInSignUp = (history) => {
+const LogInSignUp = () => {
   const dispatch=useDispatch();
   const alert= useAlert();
   const loginTab = useRef(null);
@@ -28,8 +28,8 @@ const LogInSignUp = (history) => {
 
   const {name,email,password}=user;
 
-  const [avatar, setAvatar] = useState(Profile)
-  const [avatarPreview, setAvatarPreview] = useState(Profile)
+  const [avatar, setAvatar] = useState("/Profile.png")
+  const [avatarPreview, setAvatarPreview] = useState("/Profile.png")
 
   const loginSubmit = (e) => {
     e.preventDefault();
@@ -38,26 +38,39 @@ const LogInSignUp = (history) => {
   const registerSubmit = (e) => {
     e.preventDefault();
 
-    const myForm = new FormData();
+    const myForm = {};
 
-    myForm.set("name", name);
-    myForm.set("email", email);
-    myForm.set("password", password);
-    myForm.set("avatar", avatar);
+    myForm["name"]=  name;
+    myForm["email"]= email;
+    myForm["password"] = password;
+    myForm["avatar"]=avatar;
+    // console.log("==========",myForm["name"],myForm["avatar"],myForm["email"],"==========")
     dispatch(register(myForm));
   };
 
   const registerDataChange=(e)=>{
     e.preventDefault();
     if(e.target.name==="avatar"){
-       const reader=new FileReader();
+      //  const reader=new FileReader();
 
-       reader.onload=()=>{
-        if(reader.readyState===2){
-          setAvatarPreview(reader.result);
-          setAvatar(reader.result)
-        }
-       }
+      //  console.log("reader.readyState", reader.readyState)
+      //  reader.onload=()=>{
+      //   if(reader.readyState===2){
+      //     setAvatarPreview(reader.result);
+      //     setAvatar(reader.result)
+        // }
+      //  }
+      const formData = new FormData();
+       // Update the formData object
+       formData.append(
+        "myFile",
+        e.target.files[0]
+      );
+    
+          setAvatarPreview(e.target.files[0]);
+          setAvatar(e.target.files[0])
+      // Details of the uploaded file
+      console.log(e.target.files[0]) 
 
     }
     else{
@@ -74,7 +87,7 @@ const LogInSignUp = (history) => {
       dispatch(clearingError)
     }
     if(isAuthenticated){
-      navigate("/myprofile")
+      navigate("/account")
       
     }
   }, [dispatch,error,alert,navigate,isAuthenticated])

@@ -11,19 +11,23 @@ const cloudinary= require("cloudinary")
 
 // Create new user 
 exports.registerUser=catchAsyncErrors(async(req,res,next)=>{
-  const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
-    folder: "avatars",
-    width: 150,
-    crop: "scale",
-  });
-    const{name,email,password}=req.body;
+  // const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+  //   folder: "avatars",
+  //   width: 150,
+  //   crop: "scale",
+  // });
+    const{name,email,password, avatar}=req.body;
 
+    // console.log(" avatar",  avatar)
     const user=await User.create({
         name,email,password,
-        avatar:{
-            public_id:myCloud.public_id,
-            url: myCloud.secure_url,
-        }
+        avatar: avatar
+        // https://www.bezkoder.com/node-js-upload-store-images-mongodb/
+        // {
+        //     public_id:avatar,
+        //     url:  avatar,
+            
+        // }
     })
     sendToken(user,201,res)
 })
@@ -165,8 +169,8 @@ exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
  // get user details 
  exports.getUserDetails=catchAsyncErrors(async(req,res,next)=>{
     const user= await User.findById(req.user.id);
-    console.log(req.user)
-    console.log(user)
+    // console.log(req.user)
+    // console.log(user)
     res.status(200).json({
       success:true,
       user
