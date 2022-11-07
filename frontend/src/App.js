@@ -14,17 +14,15 @@ import { useSelector } from 'react-redux';
 import UserOptions  from './components/layout/Header/UserOptions.js'
 import Profile from './components/User/Profile.js'
 import UpdateProfile from './components/User/UpdateProfile.js'
+import Cart from './components/Cart/Cart.js'
 
 function App() {
    
   const {isAuthenticated,user}=useSelector((state)=>state.user)
   useEffect(() => {
-    console.log("====================user1================",user)
     store.dispatch(loadUser());
-    console.log("====================user2================",user)
   }, [])
 
-  console.log("====================user3================",user)
   
 
 
@@ -41,6 +39,7 @@ function App() {
           {isAuthenticated&&<Route exact path= "/account" element={<Profile/>}/> } 
           {isAuthenticated&&<Route exact path= "/me/update" element={<UpdateProfile/>}/> } 
           <Route exact path= "/login" element={<LogInSignUp/>}/> 
+          <Route exact path= "/cart" element={<Cart/>}/> 
            
         </Routes>
       <Footer/>
