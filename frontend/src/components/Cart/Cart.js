@@ -13,6 +13,11 @@ const Cart = () => {
   const { cartItems } = useSelector((state) => state.cart);
   let navigate = useNavigate();
 
+  const {isAuthenticated}=useSelector((state)=>state.user)
+  // useEffect(() => {
+  //   store.dispatch(loadUser());
+  // }, [])
+
   const increaseQuantity = (id, quantity, stock) => {
     const newQty = quantity + 1;
     if (stock <= quantity) {
@@ -34,9 +39,20 @@ const Cart = () => {
     dispatch(removeItemsFromCart(id));
   };
 
+  // const checkoutHandler = () => {
+  //   navigate(`/shipping`)
+  // };
+  // const checkoutHandler = () => {
+  //   navigate("/login?redirect=Shipping");
+  // };
   const checkoutHandler = () => {
-    // history.push("/login?redirect=shipping");
-    navigate("/login?redirect=shipping")
+     if(!isAuthenticated){
+      navigate("/login")
+     }
+     else{
+      navigate("/shipping")
+     }
+    
   };
 
   return (

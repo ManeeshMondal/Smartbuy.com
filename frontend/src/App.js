@@ -1,5 +1,5 @@
 import './App.css';
-import React ,{useEffect} from 'react';
+import React ,{useEffect,useState} from 'react';
 import Header from './components/layout/Header/Header'
 import {BrowserRouter as Router, Route,Routes} from "react-router-dom" 
 import Footer from './components/layout/Footer/Footer'
@@ -15,19 +15,42 @@ import UserOptions  from './components/layout/Header/UserOptions.js'
 import Profile from './components/User/Profile.js'
 import UpdateProfile from './components/User/UpdateProfile.js'
 import Cart from './components/Cart/Cart.js'
+import Shipping from './components/Cart/Shipping.js'
+import ConfirmOrder from './components/Cart/ConfirmOrder';
+import Payment from './components/Cart/Payment.js';
+import axios from 'axios';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe} from '@stripe/stripe-js';
+import StripeCheckout from "react-stripe-checkout";
+
+
 
 function App() {
    
   const {isAuthenticated,user}=useSelector((state)=>state.user)
+
+  // const [stripeApiKey, setStripeApiKey] = useState("");
+  //const stripeApiKey="pk_test_51MEESkSBL8JUgvYSRUX9fn1keewk7zu97uUn9qCqrJaiD93YfWndvoCs2S42CYawPnbITBStb3lLUzvnFPFqw8BZ0026LOLfty"
+
+  // async function getStripeApiKey() {
+  //   const { data } = await axios.get("/api/v1/stripeapikey");
+
+  //   setStripeApiKey(data.stripeApiKey);
+  // }
+  // const stripeApiKey = document.getElementById('STRIPE_API_KEY').value;
+  // const stripeApiKey = process.env.REACT_APP_STRIPE;
+  const stripeApiKey="pk_test_51MEESkSBL8JUgvYSRUX9fn1keewk7zu97uUn9qCqrJaiD93YfWndvoCs2S42CYawPnbITBStb3lLUzvnFPFqw8BZ0026LOLfty"
+
   useEffect(() => {
     store.dispatch(loadUser());
+    // getStripeApiKey();
   }, [])
 
   
 
 
   return (
-    <Router>
+    <Router> 
       <Header/>
        {isAuthenticated && <UserOptions user={user}/>}
         <Routes>
@@ -40,6 +63,20 @@ function App() {
           {isAuthenticated&&<Route exact path= "/me/update" element={<UpdateProfile/>}/> } 
           <Route exact path= "/login" element={<LogInSignUp/>}/> 
           <Route exact path= "/cart" element={<Cart/>}/> 
+          {isAuthenticated&&<Route exact path= "/shipping" element={<Shipping/>}/> }
+          {isAuthenticated&&<Route exact path= "/order/confirm" element={<ConfirmOrder/>}/> }
+           
+          { stripeApiKey && (<Elements stripe={loadStripe(stripeApiKey) } >
+          {isAuthenticated&&<Route exact path= "/process/payment" element={<Payment/>}/> }
+          </Elements>)}
+          {/* { stripeApiKey && (<StripeCheckout stripe={loadStripe(stripeApiKey) } >
+          {isAuthenticated&&<Route exact path= "/payment/process" element={<Payment/>}/> }
+          </StripeCheckout>)} */}
+
+{/* <Elements stripe={loadStripe(stripeApiKey) } >
+          {isAuthenticated&&<Route exact path= "/process/payment" element={<Payment/>}/> }
+          </Elements>
+           */}
            
         </Routes>
       <Footer/>

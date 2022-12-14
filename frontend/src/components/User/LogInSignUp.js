@@ -1,7 +1,7 @@
 import React, { Fragment, useRef, useState,useEffect } from "react";
 import "./LogInSignUp.css";
 import Loader from "../layout/Loader/Loader";
-import { Link,useNavigate } from "react-router-dom";
+import { Link,useNavigate, useParams } from "react-router-dom";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import FaceIcon from "@material-ui/icons/Face";
@@ -10,7 +10,7 @@ import { useSelector,useDispatch } from "react-redux";
 import { clearingError,login,register} from "../../Actions/UserAction";
 import { useAlert } from "react-alert";
 
-const LogInSignUp = () => {
+const LogInSignUp = (location) => {
   const dispatch=useDispatch();
   const alert= useAlert();
   const loginTab = useRef(null);
@@ -80,17 +80,20 @@ const LogInSignUp = () => {
 
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+  const params = useParams()
 
+  // console.log("location.search",params)
+  const redirect = location.search ? location.search.split("=")[1] : "/account";
   useEffect(() => {
     if(error){
       alert.error(error);
       dispatch(clearingError)
     }
     if(isAuthenticated){
-      navigate("/account")
+      navigate(redirect)
       
     }
-  }, [dispatch,error,alert,navigate,isAuthenticated])
+  }, [dispatch,error,alert,navigate,isAuthenticated,redirect])
   
   const switchTabs = (e, tab) => {
     if (tab === "login") {
