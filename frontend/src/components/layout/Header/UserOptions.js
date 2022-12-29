@@ -39,13 +39,13 @@ const UserOptions = ({user}) => {
       if (user.role === "admin") {
         options.unshift({
           icon: <DashboardIcon />,
-          name: "Dashboard",
+          name: "Dashboard", 
           func: dashboard,
         });
       }
 
       function dashboard(){
-        navigate("/dashBoard")
+        navigate("admin/dashboard")
       }
 
       function orders(){

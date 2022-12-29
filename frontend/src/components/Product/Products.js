@@ -48,8 +48,9 @@ const Products = () => {
     setPrice(newPrice);
   };
   let count = filteredProductsCount;
-
+  console.log(products)
   useEffect(() => {
+    console.log(products)
     if(error){
       alert.error(error)
       dispatch(clearingError)

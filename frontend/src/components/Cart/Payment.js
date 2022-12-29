@@ -69,7 +69,7 @@ const Payment = () => {
       if (!stripe || !elements) return;
 
       const result = await stripe.confirmCardPayment(client_secret, {
-        payment_method: {
+        payment_method: { 
           card: elements.getElement(CardNumberElement),
           billing_details: {
             name: user.name,

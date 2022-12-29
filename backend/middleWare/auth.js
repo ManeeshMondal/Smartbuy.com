@@ -8,7 +8,7 @@ const User=require("../models/userModel")
 
     const {token}= req.cookies;
 
-   
+   console.log(req.headers)
      
     if(!token){
         return next(new ErrorHandler("Please Login to continue",401));
