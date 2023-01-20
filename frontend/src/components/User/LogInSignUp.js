@@ -5,7 +5,7 @@ import { Link,useNavigate, useParams } from "react-router-dom";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import FaceIcon from "@material-ui/icons/Face";
-import Profile from "../../Images/Profile.png"
+// import Profile from "../../Images/Profile.png"
 import { useSelector,useDispatch } from "react-redux";
 import { clearingError,login,register} from "../../Actions/UserAction";
 import { useAlert } from "react-alert";

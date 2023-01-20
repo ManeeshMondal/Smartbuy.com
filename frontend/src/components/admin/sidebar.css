@@ -9,7 +9,7 @@
     padding: 0;
   }
   .sidebar > a > img {
-    width: 100%;
+    width: 19%;
     transition: all 0.5s;
   }
   
@@ -25,7 +25,7 @@
   }
   .sidebar a:hover {
     color: tomato;
-    transform: scale(1.1);
+    /* transform: scale(1.1); */
   }
   
   .sidebar a > P {

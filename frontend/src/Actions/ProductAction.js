@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getStateByCode } from "country-state-city/lib/state";
+// import { getStateByCode } from "country-state-city/lib/state";
 import {
   ALL_PRODUCT_FAIL,
   ALL_PRODUCT_REQUEST,
