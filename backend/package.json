@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "description": "This is a ecommerce website ",
   "main": "server.js",
+  "private":"false",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "dev": "nodemon server.js",
-    "build": "npm run build"
+    "start": "node server.js"
   },
   "author": "Maneesh Mondal",
   "license": "ISC",
