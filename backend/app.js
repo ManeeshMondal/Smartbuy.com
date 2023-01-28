@@ -19,7 +19,7 @@ dotenv.config({path:"config/config.env"})
 const product= require("./routes/productRoute");
 const user=require("./routes/userRoute")
 const order=require("./routes/orderRoute")
-const payment = require("./routes/paymentRoutes")
+// const payment = require("./routes/paymentRoutes")
 
 const cors = require('cors');
 app.use(cors(
@@ -32,7 +32,7 @@ app.use(cors(
 app.use("/api/v1",product);
 app.use("/api/v1",user)
 app.use("/api/v1",order)
-app.use("/api/v1",payment)
+// app.use("/api/v1",payment)
 
 //ErrorMiddleWare
 app.use(errorMiddleWare);
