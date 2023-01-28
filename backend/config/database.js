@@ -1,7 +1,8 @@
 const mongoos= require("mongoose");
 
 const connectDatabase=()=>{
-    mongoos.connect(process.env.DB_URL,{
+  console.log(`${process.env.DB_URL}`)
+    mongoos.connect(`mongodb+srv://Maneesh1120:maneesh1120@smartbuy.yqdrzmh.mongodb.net/SmartBuy`,{
         useNewUrlParser: true,
       useUnifiedTopology: true,
       // useCreateIndex: true, 
