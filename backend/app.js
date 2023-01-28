@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(fileUpload());
 
 // config 
-dotenv.config({path:"backend/config/config.env"}) 
+dotenv.config({path:"config/config.env"}) 
 
 // route imports 
 const product= require("./routes/productRoute");

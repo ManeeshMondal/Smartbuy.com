@@ -1,11 +1,12 @@
 const Order=require("../models/oderModel")
 const Product=require("../models/productModel")
 const ErrorHandler=require("../utils/errorHandler");
-const {catchAsyncErrors}=require("../middleWare/catchAsyncErrors")
+// const {catchAsyncErrors}=require("../middleWare/catchAsyncErrors") 
 
 
 // create new oder
-exports.newOrder=catchAsyncErrors(async(req,res,next)=>{
+exports.newOrder=async(req,res,next)=>{
+    try {
     const{shippingInfo,
         orderItems,
         paymentInfo,
@@ -30,11 +31,15 @@ exports.newOrder=catchAsyncErrors(async(req,res,next)=>{
             success:true,
             order
         })
+    } catch (error) {
+        throw error
+    }
 
-})
+}
 
 // get single order 
-exports.getSingleOrder= catchAsyncErrors(async(req,res,next)=>{
+exports.getSingleOrder= async(req,res,next)=>{
+    try {
     const order= await Order.findById(req.params.id).populate("user","name email")
 
     if(!order){
@@ -44,12 +49,16 @@ exports.getSingleOrder= catchAsyncErrors(async(req,res,next)=>{
         success:true,
         order
     })
+} catch (error) {
+    throw error     
+}
 
-})
+}
 
 
 // get loggedIn user order 
-exports.myOrder= catchAsyncErrors(async(req,res,next)=>{
+exports.myOrder= async(req,res,next)=>{
+    try {
     console.log(req.user)
      const orders= await Order.findOne({user:req.user._id})
 
@@ -61,12 +70,16 @@ exports.myOrder= catchAsyncErrors(async(req,res,next)=>{
         success:true,
         orders
     })
-})
+} catch (error) {
+    throw error    
+}
+}
 
 
 // admin function 
 // get all orders -- admin
-exports.getAllOrder= catchAsyncErrors(async(req,res,next)=>{
+exports.getAllOrder= async(req,res,next)=>{
+    try {
     const orders= await Order.find()
 
     if(!orders){
@@ -82,11 +95,17 @@ exports.getAllOrder= catchAsyncErrors(async(req,res,next)=>{
         orders,
         totalAmount
     })
+} catch (error) {
+        throw error
+}
 
-})
+}
 
 // change order status  -- admin
-exports.changeOrderStatus= catchAsyncErrors(async(req,res,next)=>{
+exports.changeOrderStatus= async(req,res,next)=>{
+    try {
+        
+   
     const order= await Order.findById(req.params.id)
      
     if(order.orderStatus==="Delivered"){
@@ -106,7 +125,11 @@ exports.changeOrderStatus= catchAsyncErrors(async(req,res,next)=>{
     res.status(200).json({
         success:true,
     })
-})
+} catch (error) {
+        throw error
+}
+    
+}
 
   async function updateStock(id,quantity){
     try {
@@ -127,7 +150,10 @@ exports.changeOrderStatus= catchAsyncErrors(async(req,res,next)=>{
 
 
   // delete Order -- Admin
-exports.deleteOrder = catchAsyncErrors(async (req, res, next) => {
+exports.deleteOrder = async (req, res, next) => {
+    try {
+        
+    
     const order = await Order.findById(req.params.id);
   
     if (!order) {
@@ -139,6 +165,9 @@ exports.deleteOrder = catchAsyncErrors(async (req, res, next) => {
     res.status(200).json({
       success: true,
     });
-  });
+} catch (error) {
+      throw error  
+}
+  };
 
 

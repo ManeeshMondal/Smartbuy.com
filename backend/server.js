@@ -24,10 +24,12 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET
 })
 
-   // const port= process.env.PORT
+   const port= 4000|| process.env.PORT
 
-    const server = app.listen(process.env.PORT || 4000, async()=>{
-        console.log(`Server is working on http://localhost:8080`);
+   console.log({port})
+
+    const server = app.listen(port, async()=>{
+        console.log(`Server is working on http://localhost:4000`);
     }) 
 
 
