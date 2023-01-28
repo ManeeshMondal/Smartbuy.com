@@ -1,7 +1,7 @@
 const Order=require("../models/oderModel")
 const Product=require("../models/productModel")
 const ErrorHandler=require("../utils/errorHandler");
-const catchAsyncErrors=require("../middleWare/catchAsyncErrors")
+const {catchAsyncErrors}=require("../middleWare/catchAsyncErrors")
 
 
 // create new oder
