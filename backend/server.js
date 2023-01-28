@@ -28,7 +28,7 @@ cloudinary.config({
 
    console.log({port})
 
-    const server = app.listen(port, async()=>{
+    const server = app.listen(port, ()=>{
         console.log(`Server is working on http://localhost:4000`);
     }) 
 
