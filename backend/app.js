@@ -22,7 +22,10 @@ const order=require("./routes/orderRoute")
 // const payment = require("./routes/paymentRoutes")
 
 const cors = require('cors');
-app.use(cors());
+app.use(cors({
+    withCredentials:true,
+    origin:"https://smartbuy-com.vercel.app/"
+}));
 app.use(function (req, res, next) {
     //Enabling CORS
     res.header("Access-Control-Allow-Origin", "*");
