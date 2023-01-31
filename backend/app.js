@@ -24,7 +24,8 @@ const order=require("./routes/orderRoute")
 const cors = require('cors');
 app.use(cors({
     withCredentials:true,
-    origin:"https://smartbuy-com.vercel.app/"
+    origin:["https://smartbuy-com.vercel.app/","https://smartbuy-o5fjj7y4p-maneeshmondal.vercel.app/","smartbuy-lqy26bln9-maneeshmondal.vercel.app"],
+    default:"https://smartbuy-o5fjj7y4p-maneeshmondal.vercel.app/"
 }));
 // app.use(function (req, res, next) {
 //     //Enabling CORS
