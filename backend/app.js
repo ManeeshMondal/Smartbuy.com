@@ -22,12 +22,7 @@ const order=require("./routes/orderRoute")
 // const payment = require("./routes/paymentRoutes")
 
 const cors = require('cors');
-app.use(cors(
-    {
-        credentials: true, 
-        origin: '*'
-    }
-));
+app.use(cors());
 // routes 
 app.use("/api/v1",product);
 app.use("/api/v1",user)
