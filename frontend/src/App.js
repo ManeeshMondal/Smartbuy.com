@@ -24,7 +24,7 @@ import OrderDetails from './components/Order/OrderDetails.js';
 import axios from 'axios';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe} from '@stripe/stripe-js';
-import StripeCheckout from "react-stripe-checkout";
+// import StripeCheckout from "react-stripe-checkout"; 
 import DashBoard from "./components/admin/DashBoard.js"
 
 
@@ -58,9 +58,9 @@ function App() {
       <Header/>
        {isAuthenticated && <UserOptions user={user}/>}
         <Routes>
-        { stripeApiKey && (<Elements stripe={loadStripe(stripeApiKey) } >
+        {/* { stripeApiKey && (<Elements stripe={loadStripe(stripeApiKey) } >
           {isAuthenticated&&<Route exact path= "/process/payment" element={<Payment/>}/> }
-          </Elements>)}
+          </Elements>)} */}
           <Route exact path= "/" element={<Home/>}/>  
           <Route exact path= "/product/:id" element={<ProductDetails/>}/> 
           <Route exact path= "/products" element={<Products/>}/> 

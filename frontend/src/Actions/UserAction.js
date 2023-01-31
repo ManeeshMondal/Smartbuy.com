@@ -30,11 +30,14 @@ export const login = (email, password) => async (dispatch) => {
 
     const config = { headers: { "Content-Type": "application/json" }, withCredentials: true };
 
+    console.log("in login request")
     const {data} = await axios.post(
       "https://smartbuycom-production.up.railway.app/api/v1/login",
       { email, password },
       config
     );
+
+    console.log({data})
 
     dispatch({ type: LOGIN_SUCCESS, payload: data.user });
   } catch (error) {
@@ -81,7 +84,7 @@ export const loadUser = () => async (dispatch) => {
 
     dispatch({ type: LOAD_USER_SUCCESS, payload: data.user });
   } catch (error) {
-    dispatch({ type: LOAD_USER_FAIL, payload: error.response.data.message });
+    dispatch({ type: LOAD_USER_FAIL, payload: error.response.data?.message });
   }
 };
 

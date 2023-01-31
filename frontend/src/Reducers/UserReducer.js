@@ -29,7 +29,19 @@ export const UserReducer = (state = { user: {} }, action) => {
       };
     
     case LOGIN_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        isAuthenticated: true,
+        user: action.payload,
+      };
     case REGISTER_USER_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        isAuthenticated: true,
+        user: action.payload,
+      };
     case LOAD_USER_SUCCESS :
       return {
         ...state,
