@@ -24,15 +24,20 @@ const order=require("./routes/orderRoute")
 const cors = require('cors');
 app.use(cors({
     withCredentials:true,
-    origin:"https://smartbuy-com.vercel.app/"
+    origin:"https://smartbuy-o5fjj7y4p-maneeshmondal.vercel.app//"
 }));
-app.use(function (req, res, next) {
-    //Enabling CORS
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization");
-      next();
-    });
+// app.use(function (req, res, next) {
+//     //Enabling CORS
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization");
+//       next();
+//     });
+app.use(function (request, response, next) {
+    response.header("Access-Control-Allow-Origin", "*");
+    response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 // routes 
 app.use("/api/v1",product);
 app.use("/api/v1",user)
