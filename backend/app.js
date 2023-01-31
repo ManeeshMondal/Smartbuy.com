@@ -6,7 +6,10 @@ const bodyParser= require("body-parser")
 const fileUpload=require("express-fileupload")
 const dotenv=require("dotenv")
 
-
+app.use((req,res,next)=>{
+    console.log(req);
+    next()
+})
 app.use(expresss.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended:true}));
@@ -26,7 +29,7 @@ app.use(cors({
     
     // origin:["https://smartbuy-com.vercel.app/","https://smartbuy-o5fjj7y4p-maneeshmondal.vercel.app/","smartbuy-lqy26bln9-maneeshmondal.vercel.app"],
     // default:"https://smartbuy-o5fjj7y4p-maneeshmondal.vercel.app/"
-    origin:"https://smartbuy-com.vercel.app"
+    origin:"*"
 }));
 // app.use(function (req, res, next) {
 //     //Enabling CORS
