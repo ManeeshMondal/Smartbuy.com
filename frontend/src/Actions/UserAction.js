@@ -108,7 +108,7 @@ export const updateProfile= (userData) => async(dispatch) =>{
     dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: data.success });
     
   } catch (error) {
-    dispatch({ type: UPDATE_PROFILE_FAIL, payload: error.response.data.message });
+    dispatch({ type: UPDATE_PROFILE_FAIL, payload: error.response.data?.message });
   }
 } 
 
@@ -124,7 +124,7 @@ export const logout = () => async (dispatch) => {
 
     dispatch({ type: LOGOUT_SUCCESS});
   } catch (error) {
-    dispatch({ type: LOGOUT_FAIL, payload: error.response.data.message });
+    dispatch({ type: LOGOUT_FAIL, payload: error.response.data?.message });
   }
 };
 
