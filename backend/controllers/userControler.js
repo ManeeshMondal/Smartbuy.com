@@ -61,8 +61,8 @@ exports.loginUser=async(req,res,next)=>{
         return next(new ErrorHandler("Please Enter Valid Login Credentials",401));
     }
     
-    const isPasswordMatched= await user.comparePassword(password);
-    
+    const isPasswordMatched= await user.comparePassword(password)
+    console.log("==========================",isPasswordMatched,"==========")
     // if Password does not match 
     if(!isPasswordMatched){
         return next(new ErrorHandler("Please Enter Valid Login Credentials",401));
