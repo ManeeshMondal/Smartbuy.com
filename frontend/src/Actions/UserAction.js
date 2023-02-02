@@ -32,7 +32,7 @@ export const login = (email, password) => async (dispatch) => {
     
     console.log("in login request")
     const {data} = await axios.post(
-      "https://smartbuycom-production.up.railway.app/api/v1/login",
+      "https://smartbuycom-production.up.railway.app/api/v1/signIn",
       { email, password },
       config
     );
