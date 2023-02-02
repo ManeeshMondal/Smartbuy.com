@@ -28,13 +28,13 @@ export const login = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: LOGIN_REQUEST });
 
-    // const config = { headers: { "Content-Type": "application/json" ,"Access-Control-Allow-Origin": "*"}, withCredentials: true };
+    const config = { headers: { "Content-Type": "application/json" ,"Access-Control-Allow-Origin": "*"}, withCredentials: true };
     
     console.log("in login request")
     const {data} = await axios.post(
       "https://smartbuycom-production.up.railway.app/api/v1/login",
       { email, password },
-      // config
+      config
     );
 
     console.log({data})
