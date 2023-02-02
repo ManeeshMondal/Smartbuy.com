@@ -9,7 +9,7 @@ const dotenv=require("dotenv")
 const cors = require('cors');
 
 const corsOrigin ={
-    origin:true, //or whatever port your frontend is using
+    origin:"https://smartbuy-com.vercel.app/", //or whatever port your frontend is using
     credentials:true,            
     optionSuccessStatus:200
 }
