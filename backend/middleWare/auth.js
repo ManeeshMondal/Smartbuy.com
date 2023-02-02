@@ -8,13 +8,13 @@ const User=require("../models/userModel")
 
     const {token}= req.cookies;
 
-   console.log(req.headers)
+   console.log({token})
      
     if(!token){
-        return next(new ErrorHandler("Please Login to continue",401));
+        throw new ErrorHandler("Please Login to continue",401);
     }
 
-    const decodedData =await jwt.verify(token,process.env.JWT_SECRET);
+    const decodedData = jwt.verify(token,process.env.JWT_SECRET);
     req["user"]= await User.findById(decodedData.id);
     next();
     

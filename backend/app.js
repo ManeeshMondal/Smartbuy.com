@@ -6,10 +6,25 @@ const bodyParser= require("body-parser")
 const fileUpload=require("express-fileupload")
 const dotenv=require("dotenv")
 
-app.use((req,res,next)=>{
-    console.log(req);
-    next()
-})
+const cors = require('cors');
+
+const corsOrigin ={
+    origin:true, //or whatever port your frontend is using
+    credentials:true,            
+    optionSuccessStatus:200
+}
+app.use(cors(corsOrigin));
+
+// app.use(function(req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     next();
+//   });
+
+// app.use((req,res,next)=>{
+//     console.log(req);
+//     next()
+// })
 app.use(expresss.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended:true}));
@@ -24,21 +39,20 @@ const user=require("./routes/userRoute")
 const order=require("./routes/orderRoute")
 // const payment = require("./routes/paymentRoutes")
 
-const cors = require('cors');
-app.use(cors());
-{
+
+// {
     
     // origin:["https://smartbuy-com.vercel.app/","https://smartbuy-o5fjj7y4p-maneeshmondal.vercel.app/","smartbuy-lqy26bln9-maneeshmondal.vercel.app"],
     // default:"https://smartbuy-o5fjj7y4p-maneeshmondal.vercel.app/"
     // origin:"*"
-}
+// }
 // app.use(function (req, res, next) {
 //     //Enabling CORS
 //     res.header("Access-Control-Allow-Origin", "*");
 //     res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
 //     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization");
-//       next();
-//     });
+//     next();
+    // });
 // app.use(function (request, response, next) {
 //     response.header("Access-Control-Allow-Origin", "*");
 //     response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");

@@ -58,9 +58,9 @@ const userSchema = new mongoose.Schema({
    })
 
   //  JWT authentication 
-  userSchema.methods.getJWTToken=function(){
+  userSchema.methods.getJWTToken=function(user){
        console.log("============",process.env.JWT_SECRET)
-      return JWT.sign({id:this._id},process.env.JWT_SECRET,{
+      return JWT.sign({id:user._id},process.env.JWT_SECRET,{
         expiresIn: process.env.JWT_EXPIRE,
       })
   }

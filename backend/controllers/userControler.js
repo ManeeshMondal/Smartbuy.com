@@ -34,7 +34,7 @@ exports.registerUser=async(req,res,next)=>{
     })
     sendToken(user,201,res)
   } catch (error) {
-     throw error
+    next(error)
   }
 }
 
@@ -50,7 +50,7 @@ exports.loginUser=async(req,res,next)=>{
 
     // check if the user has given the email and password both 
     if(!email||!password){
-        return next(new ErrorHandler("Please Enter Email and Password",400));
+        throw new ErrorHandler("Please Enter Email and Password",400);
     }
 
     // finding  in the database with the entered email and passwrod 
@@ -58,20 +58,27 @@ exports.loginUser=async(req,res,next)=>{
     console.log({user})
     // if there is no such user 
     if(!user){
-        return next(new ErrorHandler("Please Enter Valid Login Credentials",401));
+       throw new ErrorHandler("Please Enter Valid Login Credentials",401);
     }
     
     const isPasswordMatched= await user.comparePassword(password)
     console.log("==========================",isPasswordMatched,"==========")
     // if Password does not match 
     if(!isPasswordMatched){
-        return next(new ErrorHandler("Please Enter Valid Login Credentials",401));
+       throw new ErrorHandler("Please Enter Valid Login Credentials",401);
     }
     // if password matched 
     sendToken(user,200,res)
+    // const token =  user.getJWTToken(user);
+    // console.log({token})
+    // res.status(200).send({
+    //   data:{success: true,
+    //   user,
+    //   token,}
+    // })
   } catch (error) {
     console.log({error})
-     throw error
+     next(error)
   }
 }
 
@@ -90,7 +97,7 @@ exports.logOut=async(req,res,next)=>{
         message:"Logged Out succeccfully"
     })
   } catch (error) {
-     throw error 
+     next(error)
   }
 }
 
@@ -200,13 +207,13 @@ exports.resetPassword = async (req, res, next) => {
   
     const user= await User.findById(req.user.id);
     // console.log(req.user)
-    // console.log(user)
+    console.log({user})
     res.status(200).json({
       success:true,
       user
     })
   } catch (error) {
-     throw error 
+     next(error) 
   }
  }
 
