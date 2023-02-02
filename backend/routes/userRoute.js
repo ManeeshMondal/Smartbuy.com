@@ -12,7 +12,7 @@ const router=express.Router();
 router.route("/register").post(registerUser)
 
 // Log in user
-router.route("/login").post(loginUser)
+router.route("/signIn").post(loginUser)
 
 // forgot password 
 router.route("/password/forgot").post(forgotPassword)
