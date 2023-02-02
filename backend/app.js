@@ -25,19 +25,12 @@ const order=require("./routes/orderRoute")
 // const payment = require("./routes/paymentRoutes")
 
 const cors = require('cors');
-const corsOptions ={
-    origin:'https://smartbuycom-production.up.railway.app/', 
-    credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200
-}
-app.use(cors(corsOptions));
-// app.use(cors());
+app.use(cors());
 {
     
     // origin:["https://smartbuy-com.vercel.app/","https://smartbuy-o5fjj7y4p-maneeshmondal.vercel.app/","smartbuy-lqy26bln9-maneeshmondal.vercel.app"],
     // default:"https://smartbuy-o5fjj7y4p-maneeshmondal.vercel.app/"
     // origin:"*"
-    // origin:"https://smartbuycom-production.up.railway.app/"
 }
 // app.use(function (req, res, next) {
 //     //Enabling CORS
