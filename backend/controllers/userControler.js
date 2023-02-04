@@ -43,7 +43,6 @@ exports.registerUser=async(req,res,next)=>{
 // login user 
 exports.loginUser=async(req,res,next)=>{
   try {
-
   const{email, password}=req.body;
      console.log({email})
      console.log({password})
@@ -68,14 +67,14 @@ exports.loginUser=async(req,res,next)=>{
        throw new ErrorHandler("Please Enter Valid Login Credentials",401);
     }
     // if password matched 
-    sendToken(user,200,res)
+    // sendToken(user,200,res)
     // const token =  user.getJWTToken(user);
     // console.log({token})
-    // res.status(200).send({
-    //   data:{success: true,
-    //   user,
-    //   token,}
-    // })
+    res.status(200).send({
+      data:{success: true,
+      user,
+      token,}
+    })
   } catch (error) {
     console.log({error})
      next(error)

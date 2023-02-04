@@ -20,7 +20,7 @@ catch(err){
 };
 
 //  get all products
-exports.getAllProducts = async (req, res) => {
+exports.getAllProducts = async (req, res,next) => {
   try {
   const resultPerPage = 8;
   const productCount = await Product.countDocuments();
@@ -41,7 +41,7 @@ exports.getAllProducts = async (req, res) => {
   });
 }
   catch (error) {
-    throw error;
+    next(error);
   }
 };
 // get product details
