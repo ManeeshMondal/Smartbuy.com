@@ -86,7 +86,7 @@ export const createProduct = (productData) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      `http://localhost:4000/api/v1/admin/product/new`,
+      `https://smartbuycom-production.up.railway.app/api/v1/admin/product/new`,
       productData,
       config
     );
@@ -156,7 +156,7 @@ export const deleteProduct = (id) => async (dispatch) => {
         dispatch({
             type:PRODUCT_DETAILS_REQUEST
         })
-        const {data}=await axios.get(`http://localhost:4000/api/v1/product/${id}`)
+        const {data}=await axios.get(`https://smartbuycom-production.up.railway.app/api/v1/product/${id}`)
         dispatch({  
             type:PRODUCT_DETAILS_SUCCESS,
             payload:data.product, 
@@ -179,7 +179,7 @@ export const newReview = (reviewData) => async (dispatch,getState) => {
       cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzdhNjc0NzE2NmZlZTkzM2E2ZjhiNCIsImlhdCI6MTY3MjMyNTgzMSwiZXhwIjoxNjcyNzU3ODMxfQ.z6X7EJcjYR00NNJGv85Mme7Np11is0Nt22ZFEL6gKxw"}
     };
     
-    const { data } = await axios.put(`http://localhost:4000/api/v1/review`, reviewData, config);
+    const { data } = await axios.put(`https://smartbuycom-production.up.railway.app/api/v1/review`, reviewData, config);
      
     dispatch({
       type: NEW_REVIEW_SUCCESS,
