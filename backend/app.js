@@ -6,10 +6,12 @@ const bodyParser= require("body-parser")
 const fileUpload=require("express-fileupload")
 const dotenv=require("dotenv")
 
-const cors = require('cors');
+var cors = require('cors');
 
 const corsOrigin ={
     origin:"https://smartbuy-com.vercel.app/", //or whatever port your frontend is using
+    // origin:"http://localhost:3000", //or whatever port your frontend is using 
+   // origin:true, //or whatever port your frontend is using
     credentials:true,            
     optionSuccessStatus:200
 }

@@ -14,15 +14,14 @@ exports.createProduct = async (req, res, next) => {
   });
 }
 catch(err){
-  throw err
+  // throw err 
+  next(err)
 }
 };
 
 //  get all products
 exports.getAllProducts = async (req, res) => {
   try {
-    
-  
   const resultPerPage = 8;
   const productCount = await Product.countDocuments();
 
