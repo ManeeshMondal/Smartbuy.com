@@ -19,7 +19,7 @@ var cors = require('cors');
 app.use(cors());
 
 app.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', 'https://https://smartbuy-com.vercel.app/');
+    res.setHeader('Access-Control-Allow-Origin', 'https://smartbuy-r6cmy3f2n-maneeshmondal.vercel.app/');
     next();
   });
 
