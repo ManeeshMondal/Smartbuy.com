@@ -46,7 +46,7 @@ function App() {
   // const stripeApiKey="pk_test_51MEESkSBL8JUgvYSRUX9fn1keewk7zu97uUn9qCqrJaiD93YfWndvoCs2S42CYawPnbITBStb3lLUzvnFPFqw8BZ0026LOLfty"
 
   useEffect(() => {
-    store.dispatch(loadUser());
+    isAuthenticated&&store.dispatch(loadUser());
     // getStripeApiKey();
   }, [])
 
