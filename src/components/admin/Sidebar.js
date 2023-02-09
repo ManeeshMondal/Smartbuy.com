@@ -14,7 +14,6 @@ import PeopleIcon from "@material-ui/icons/People";
 import RateReviewIcon from "@material-ui/icons/RateReview";
 
 const Sidebar = () => {
-  try {
     return (
          
         <div className="sidebar">
@@ -58,10 +57,7 @@ const Sidebar = () => {
         </div>
     
        
-      );
-  } catch(error) {
-     console.log(error)
-  }
+      )
  
 };
 
