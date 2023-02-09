@@ -5,7 +5,7 @@ import {
 } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { newReviewReducer, productDetailsReducer, productReducer, productsReducer } from "./Reducers/Productreducer";
+import { newReviewReducer, productDetailsReducer,  productsReducer } from "./Reducers/Productreducer";
 import { ProfileReducer, UserReducer } from "./Reducers/UserReducer";
 import { CartReducer } from "./Reducers/CartReducer";
 import { myOrdersReducer, newOrderReducer, orderDetailsReducer } from "./Reducers/OrderReducer";

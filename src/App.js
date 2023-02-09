@@ -1,5 +1,5 @@
 import './App.css';
-import React ,{useEffect,useState} from 'react';
+import React ,{useEffect} from 'react';
 import Header from './components/layout/Header/Header'
 import {  BrowserRouter as Router,  Routes,  Route} from "react-router-dom"
 import Footer from './components/layout/Footer/Footer'
@@ -17,11 +17,11 @@ import UpdateProfile from './components/User/UpdateProfile.js'
 import Cart from './components/Cart/Cart.js'
 import Shipping from './components/Cart/Shipping.js'
 import ConfirmOrder from './components/Cart/ConfirmOrder';
-import Payment from './components/Cart/Payment.js';
+// import Payment from './components/Cart/Payment.js';
 import OrderSuccess from './components/Cart/OrderSuccess.js';
 import MyOrders from './components/Order/MyOrders.js';
 import OrderDetails from './components/Order/OrderDetails.js';
-import axios from 'axios';
+// import axios from 'axios';
 // import { Elements } from '@stripe/react-stripe-js';
 // import { loadStripe} from '@stripe/stripe-js';
 // import StripeCheckout from "react-stripe-checkout"; 

@@ -9,9 +9,9 @@ import ListAltIcon from "@material-ui/icons/ListAlt";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import {useNavigate } from 'react-router-dom';
 import { useDispatch,useSelector } from 'react-redux';
-import Profile from "../../../Images/Profile.png"
+// import Profile from "../../../Images/Profile.png"
 import { useAlert } from 'react-alert';
-import { logout,clearingError } from '../../../Actions/UserAction';
+import { logout } from '../../../Actions/UserAction';
 
 
 const UserOptions = ({user}) => {

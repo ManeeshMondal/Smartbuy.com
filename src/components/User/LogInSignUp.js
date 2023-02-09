@@ -80,7 +80,7 @@ const LogInSignUp = (location) => {
 
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  const params = useParams()
+  // const params = useParams() 
 
   // console.log("location.search",params)
   const redirect = location.search ? location.search.split("=")[1] : "/account";

@@ -56,7 +56,7 @@ const Products = () => {
       dispatch(clearingError)
     }
     dispatch(getProduct(keyword, currentPage, price,category,ratings));
-  }, [dispatch, keyword, currentPage, price,category,ratings,error,alert]);
+  }, [dispatch, keyword, currentPage, price,category,ratings,error,alert,products]);
 
   return (
     <Fragment>
