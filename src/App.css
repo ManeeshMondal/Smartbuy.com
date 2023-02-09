@@ -1,0 +1,19 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    scroll-behavior: smooth;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+.greenColor {
+  color: green !important;
+}
+.redColor {
+  color: red !important;
+}
