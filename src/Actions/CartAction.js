@@ -4,7 +4,7 @@ import axios from "axios"
 
 // add to cart 
 export const addItemsToCart = (id,quantity) => async (dispatch,getState) => {
-      const {data} = await axios.get(`http://localhost:4000/api/v1/product/${id}`);
+      const {data} = await axios.get(`https://smartbuycom-production.up.railway.app/api/v1/product/${id}`);
   
       dispatch({ type:ADD_TO_CART , payload:{
          product:data.product._id,
