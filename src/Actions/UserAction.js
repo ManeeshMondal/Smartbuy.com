@@ -32,7 +32,7 @@ export const login = (email, password) => async (dispatch) => {
     
     console.log("in login request")
     const {data} = await axios.post(
-      "https://smartbuycom-production.up.railway.app/api/v1/login",
+      "http://localhost:4000/api/v1/login",
       { email, password },
       config
     );
@@ -58,7 +58,7 @@ export const register= (userData) => async(dispatch) =>{
       const config={headers: {"content-type":"multipart/form-data"} , withCredentials: true}
 
       const {data} = await axios.post(
-        "https://smartbuycom-production.up.railway.app/api/v1/register",
+        "http://localhost:4000/api/v1/register",
         userData,
         config
       );
@@ -80,7 +80,7 @@ export const loadUser = () => async (dispatch) => {
   try {
     dispatch({ type: LOAD_USER_REQUEST });
 
-    const {data} = await axios.get("https://smartbuycom-production.up.railway.app/api/v1/me", { withCredentials: true });
+    const {data} = await axios.get("http://localhost:4000/api/v1/me", { withCredentials: true });
 
     dispatch({ type: LOAD_USER_SUCCESS, payload: data.user });
   } catch (error) {
@@ -100,7 +100,7 @@ export const updateProfile= (userData) => async(dispatch) =>{
     const config={headers: {"content-type":"multipart/form-data"} , withCredentials: true}
 
     const {data} = await axios.put(
-      "https://smartbuycom-production.up.railway.app/api/v1/me/update",
+      "http://localhost:4000/api/v1/me/update",
       userData,
       config
     );
@@ -120,7 +120,7 @@ export const updateProfile= (userData) => async(dispatch) =>{
 export const logout = () => async (dispatch) => {
   try {
 
-     await axios.get("https://smartbuycom-production.up.railway.app/api/v1/logout", { withCredentials: true });
+     await axios.get("http://localhost:4000/api/v1/logout", { withCredentials: true });
 
     dispatch({ type: LOGOUT_SUCCESS});
   } catch (error) {

@@ -8,6 +8,8 @@ const dotenv=require("dotenv")
 
 var cors = require('cors');
 
+app.use(cors())
+
 // const corsOrigin ={
 //     origin:["https://smartbuy-com.vercel.app/","https://smartbuy-r6cmy3f2n-maneeshmondal.vercel.app"], //or whatever port your frontend is using
 //     // origin:"http://localhost:3000", //or whatever port your frontend is using 
@@ -16,12 +18,12 @@ var cors = require('cors');
 //     credentials:true,            
 //     optionSuccessStatus:200
 // }
-app.use(cors({
-    credentials: true, 
-    // origin:[ 'https://smart-buy-maneesh.netlify.app/',"http://localhost:3000/"] 
-    origin:true
+// app.use(cors({
+//     credentials: true, 
+//     // origin:[ 'https://smart-buy-maneesh.netlify.app/',"http://localhost:3000/"] 
+//     origin:true
     
-}));
+// }));
 
 // app.use(function (req, res, next) {
 //     res.setHeader('Access-Control-Allow-Origin', '*');
