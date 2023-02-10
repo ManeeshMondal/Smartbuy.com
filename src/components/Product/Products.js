@@ -48,15 +48,15 @@ const Products = () => {
     setPrice(newPrice);
   };
   let count = filteredProductsCount;
-  console.log(products)
+  // console.log(products)
   useEffect(() => {
-    console.log(products)
+    // console.log(products)
     if(error){
       alert.error(error)
       dispatch(clearingError)
     }
     dispatch(getProduct(keyword, currentPage, price,category,ratings));
-  }, [dispatch, keyword, currentPage, price,category,ratings,error,alert,products]);
+  }, [dispatch, keyword, currentPage, price,category,ratings,error,alert]);
 
   return (
     <Fragment>

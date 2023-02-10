@@ -70,11 +70,12 @@ exports.loginUser=async(req,res,next)=>{
     // sendToken(user,200,res)
     // const token =  user.getJWTToken(user);
     // console.log({token})
-    res.status(200).send({
-      data:{success: true,
-      user,
-      token,}
-    })
+    // res.status(200).send({
+    //   data:{success: true,
+    //   user,
+    //   token}
+    // })
+    sendToken(user, 200, res);
   } catch (error) {
     console.log({error})
      next(error)

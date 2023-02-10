@@ -39,10 +39,10 @@ import {
             type:ALL_PRODUCT_REQUEST
         })
 
-        let link=`https://smartbuycom-production.up.railway.app/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`
+        let link=`http://localhost:4000/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`
 
         if(category){
-          link=`https://smartbuycom-production.up.railway.app/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`
+          link=`http://localhost:4000/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`
         }
         const {data}=await axios.get(link)
         dispatch({
@@ -53,7 +53,7 @@ import {
     } catch (error) {
         dispatch({
            type:ALL_PRODUCT_FAIL,
-           payload:error.response.data?.message,
+           payload:error.response.data.message,
         }) 
     }
   }
@@ -62,7 +62,7 @@ export const getAdminProduct = () => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_PRODUCT_REQUEST });
 
-    const { data } = await axios.get("https://smartbuycom-production.up.railway.app/api/v1/admin/products");
+    const { data } = await axios.get("http://localhost:4000/api/v1/admin/products");
 
     dispatch({
       type: ADMIN_PRODUCT_SUCCESS,
@@ -86,7 +86,7 @@ export const createProduct = (productData) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      `https://smartbuycom-production.up.railway.app/api/v1/admin/product/new`,
+      `http://localhost:4000/api/v1/admin/product/new`,
       productData,
       config
     );
@@ -113,7 +113,7 @@ export const updateProduct = (id, productData) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `https://smartbuycom-production.up.railway.app/api/v1/admin/product/${id}`,
+      `http://localhost:4000/api/v1/admin/product/${id}`,
       productData,
       config
     );
@@ -135,7 +135,7 @@ export const deleteProduct = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_PRODUCT_REQUEST });
 
-    const { data } = await axios.delete(`https://smartbuycom-production.up.railway.app/api/v1/admin/product/${id}`);
+    const { data } = await axios.delete(`http://localhost:4000/api/v1/admin/product/${id}`);
 
     dispatch({
       type: DELETE_PRODUCT_SUCCESS,
@@ -156,7 +156,7 @@ export const deleteProduct = (id) => async (dispatch) => {
         dispatch({
             type:PRODUCT_DETAILS_REQUEST
         })
-        const {data}=await axios.get(`https://smartbuycom-production.up.railway.app/api/v1/product/${id}`)
+        const {data}=await axios.get(`http://localhost:4000/api/v1/product/${id}`)
         dispatch({  
             type:PRODUCT_DETAILS_SUCCESS,
             payload:data.product, 
@@ -170,37 +170,34 @@ export const deleteProduct = (id) => async (dispatch) => {
   }
 
   // NEW REVIEW
-export const newReview = (reviewData) => async (dispatch,getState) => {
-  try {
-    dispatch({ type: NEW_REVIEW_REQUEST });
-
-    const config = {
-      headers: { "Content-Type": "application/json" },
-      cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzdhNjc0NzE2NmZlZTkzM2E2ZjhiNCIsImlhdCI6MTY3MjMyNTgzMSwiZXhwIjoxNjcyNzU3ODMxfQ.z6X7EJcjYR00NNJGv85Mme7Np11is0Nt22ZFEL6gKxw"}
-    };
-    
-    const { data } = await axios.put(`https://smartbuycom-production.up.railway.app/api/v1/review`, reviewData, config);
-     
-    dispatch({
-      type: NEW_REVIEW_SUCCESS,
-      payload: data.success,
-    });
-  } catch (error) {
-    console.log(error.response.data.message)
-    console.log(getState().user.token)
-    dispatch({
-      type: NEW_REVIEW_FAIL,
-      payload: error.response.data.message,
-    });
-  }
-};
+  export const newReview = (reviewData) => async (dispatch) => {
+    try {
+      dispatch({ type: NEW_REVIEW_REQUEST });
+  
+      const config = {
+        headers: { "Content-Type": "application/json" },
+      };
+  
+      const { data } = await axios.put(`http://localhost:4000/api/v1/review`, reviewData, config);
+  
+      dispatch({
+        type: NEW_REVIEW_SUCCESS,
+        payload: data.success,
+      });
+    } catch (error) {
+      dispatch({
+        type: NEW_REVIEW_FAIL,
+        payload: error.response.data.message,
+      });
+    }
+  };
 
 // Get All Reviews of a Product
 export const getAllReviews = (id) => async (dispatch) => {
   try {
     dispatch({ type: ALL_REVIEW_REQUEST });
 
-    const { data } = await axios.get(`https://smartbuycom-production.up.railway.app/api/v1/reviews?id=${id}`);
+    const { data } = await axios.get(`http://localhost:4000/api/v1/reviews?id=${id}`);
 
     dispatch({
       type: ALL_REVIEW_SUCCESS,
@@ -220,7 +217,7 @@ export const deleteReviews = (reviewId, productId) => async (dispatch) => {
     dispatch({ type: DELETE_REVIEW_REQUEST });
 
     const { data } = await axios.delete(
-      `https://smartbuycom-production.up.railway.app/api/v1/reviews?id=${reviewId}&productId=${productId}`
+      `http://localhost:4000/api/v1/reviews?id=${reviewId}&productId=${productId}`
     );
 
     dispatch({
