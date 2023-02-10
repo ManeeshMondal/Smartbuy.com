@@ -18,7 +18,9 @@ var cors = require('cors');
 // }
 app.use(cors({
     credentials: true, 
-    origin: 'https://smart-buy-maneesh.netlify.app/'
+    // origin:[ 'https://smart-buy-maneesh.netlify.app/',"http://localhost:3000/"] 
+    origin:true
+    
 }));
 
 // app.use(function (req, res, next) {
